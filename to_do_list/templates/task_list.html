@@ -1,0 +1,10 @@
+{% extends 'home.html' %}
+
+{% block list %}
+
+{% for  task_obj in tasks %}
+<h1>Task : {{task_obj.task | upper}}</h1>
+<p>Deadline : {{task_obj.deline| default:'No data available'}}</p>
+<h4>Priority : {{task_obj.prio}}</h4>
+{% endfor %}
+{% endblock %}

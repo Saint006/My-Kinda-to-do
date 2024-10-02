@@ -1,0 +1,11 @@
+{%extends 'home.html' %}
+
+{% block list %}
+<form method="post"  enctype="multipart/form-data">
+    {% csrf_token %}
+    Task : <input type="text" name="task">
+    Deadline : <input type="time" name="deline">
+    Priority : <input type="range" name="prio" min="1" max="10">
+<button type="submit">Create</button>
+</form>
+{% endblock %}
