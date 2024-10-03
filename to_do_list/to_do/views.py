@@ -1,19 +1,19 @@
 from django.shortcuts import render
 from . models import Todolist
+from . forms import TaskForm
 
 # Create your views here.
 def todo(request):
+    frm = TaskForm()
     if request.POST :
-        task=request.POST.get('task')
-        deline=request.POST.get('deline')
-        prio=request.POST.get('prio')
+        frm=TaskForm(request.POST)
+        if frm.is_valid:
+            frm.save()
+            frm=TaskForm
+        else:
+            frm=TaskForm()
 
-        todo_obj = Todolist(task=task,deline=deline,prio=prio)
-        todo_obj.save()
-
-
-
-    return render(request,'list.html')
+    return render(request,'list.html',{'frm':frm})
 
 def tasks(request):
     tasklist = Todolist.objects.all()
