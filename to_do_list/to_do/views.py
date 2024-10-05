@@ -17,4 +17,5 @@ def todo(request):
 
 def tasks(request):
     tasklist = Todolist.objects.all()
-    return render(request,'task_list.html',{'tasks':tasklist})
+    return render(request, 'task_list.html', {'tasks': tasklist})
+
